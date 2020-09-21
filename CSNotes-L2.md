@@ -136,8 +136,8 @@ if you use it with the -R swith it will **search an entire directory.**
 `grep -R foo ./somesubdir` 
 
 #### ripgrep
-\- fast and more robust than grep
-\- also has a `--files-wihout-match` option thats useful
+fast and more robust than grep
+also has a `--files-wihout-match` option thats useful
 ===
 
 ### shell history
