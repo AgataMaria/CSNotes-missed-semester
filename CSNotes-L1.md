@@ -1,6 +1,6 @@
-##shell - the basics
+## shell - the basics
 
-###What is shell?
+### What is shell?
 Basic tool to interact with your computer - allows you full access to it's resources, it's a textual interface, GUI has it's limiations.
 
 Most platforms provide their own shells - examples:
@@ -8,11 +8,11 @@ Windows - PowerShell
 Linux - bash (Born Again SHell)
 MacOS - also bash (used by the terminal app)
 
-####- EXTRA - 
+#### EXTRA 
 _Useful:_ [explain shell](https://explainshell.com/)
 
 
-###Getting started:
+### Getting started:
 It will probably already be installed on your platform, you can Google it if you don't know how to access it.
 
 When you open shell you see a prompt, that's customisable, but usually it's a combination of 
@@ -32,7 +32,7 @@ Jake the Dog
 **NB.** When passing strings containt them in single or double quotes, or escape the white space with '\'. (doesn't work in PowerShell??)
 
 
-###How shell works:
+### How shell works:
 Shell knows, which program to execute when we type 'date' or 'echo', because the path value is stored in a variable on your file system (*environment variables* - examples would be your homefolder, some app paths etc.).
 Shell is basically a programming language, you execute commands, but can also use while loops, for loops, define functions, have variables etc.
 
@@ -42,10 +42,10 @@ _Useful:_ which [app name]
 - will tell you which path it would use if you wanted to run it.
 
 
-##paths
+## paths
 Full locations of a resource in your file system. In Linux and MacOS everything is mounted to one root name space and then subdirectories are separated by '/'.
 In Windows a '\' is used to separate directories and every partition has it's own root that has a letter assigned to it (eg. 'C:\' 'D:\').
-####- EXTRA -
+#### EXTRA
 That's because '/' had a different use in MS-DOS - more info [here](https://www.howtogeek.com/181774/why-windows-uses-backslashes-and-everything-else-uses-forward-slashes/)
 
 **Absolute paths** - 'full' paths - eg. /use/bin/ | C:/Users/%username%/Documents  
@@ -56,7 +56,7 @@ Generally any app we use wil by default **RUN IN THE CURRENT DIRECTORY (!) unles
 
 
 
-##commands - basics (flags / options (switches) / help) 
+## commands - basics (flags / options (switches) / help) 
 Most programs take optional arguments that change their behaviour - options and flags usually start with - or -- (also / in Windows - eg. shutdown /r).
 Anything that takes a value is an option, anything that doesn't take a value is a flag.
 _Examples:_ **ls -l** (you can use just ls, but ls -l give you a more detailed view)
