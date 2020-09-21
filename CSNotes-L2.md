@@ -9,7 +9,6 @@ _From Wiki:_
 So in shell script you can use variables, for-loops etc.
 
 ### Variables
-**syntax**  
 To _create vars_ you just declare and assign them -->
 `foo=bar` # **DO NOT USE SPACES**   
 
@@ -20,10 +19,10 @@ For **string interpolation/substitution** you need to use double quotes -->
 `'Foo has a value of $foo'` WRONG  
 
 ### Functions
-**syntax**  
 To declare a function use '**fname** **()** **{** _functionbody_ **}**'  
 To grab arguments from the command line instead of argv use `$numer` to interpolate to your function body  
 _example_
+
 	mcd () {
 		mkdir -p "$1"
 		cd "$1" 
