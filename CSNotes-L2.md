@@ -80,21 +80,21 @@ if statements are written slightly differently...
 
 so this reads if error from previous command is not equal zero (if there _is_ an error... otherwise command would print 0) then _do sth_  
 
-## good to know
+## shell tools - good to know
 
 ### beyond bash
 You can write scripts in a lot of different languages - eg. python  
-- in pythong you need to `import sys` as python does not interact with system by default
-- to grab cmd arg in python use `argv[number]` ($number in bash)  
+\- in python you need to `import sys` as python does not interact with system by default
+\- to grab cmd arg in python use `argv[number]` ($number in bash)  
 
-- to run a scrip in python from shell you have two options:  
+\- to run a scrip in python from shell you have two options:  
 	1. `python [path]` to use python and parse 'path' as an argument
 	2. add `#!use/bin/env python` to find 'python' in 'env'
 
-### tips - bash
+### shellcheck - bash
 `shellcheck [path]` let's you check your script - it gives warnings and advisories for best practices
 
-### running vs. loading bash
+**NB.** running vs. loading bash
 running scripts in isolation and loading shell have their differences  
 :question::sweat_smile: not sure what he means? ~27min  
 
@@ -106,15 +106,14 @@ remembers it's a programm so you need to exit it with 'q' before you can go back
 Reading man pages can be tricky, but you can use [tldr](#tldr)
 
 #### tldr
-A good tool to install, articles submitted by community, good examples, nicely formatted  
+A good tool to install, articles submitted by community, good examples, nicely formatted 
+=== 
 
 ### find by name
-####find
+#### find
 `find` - a tool that comes with almost every UNIX(like) system  
-_Usage:_ :question::sweat_smile: need to find good examples    
+_Usage:_ :question: need to find good examples    
 [GNU docs](http://www.gnu.org/software/findutils/)  
-
-:question: need to look for good examples  
 
 You can chain commands with find:
 _example_
@@ -125,13 +124,30 @@ reads: find in current directory all items with name ending '.docx' and execute 
 `fd` - even better as knows, which files to ignore etc. and colour codes - grown by the community  
 
 #### locate
-looks for paths in fs that have a specified substring  
+looks for **paths** in fs that have a specified substring  
 Usage: `locate shell`  
 
-:question: What was that about updatedb??
+:question::sweaty-smile: What was that about updatedb??
 
 ### find by content
+#### grep
+grep **finds a string** in a specified file, but  
+if you use it with the -R swith it will **search an entire directory.**
+`grep -R foo ./somesubdir` 
 
+#### ripgrep
+\- fast and more robust than grep
+\- also has a `--files-wihout-match` option thats useful
+===
 
+### shell history
+#### history
 
+#### <kbd>Ctrl</kbd> + <kbd>R</kbd>
+
+#### fzf
+.
+===
+
+### navigation
 
