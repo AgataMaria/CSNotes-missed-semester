@@ -8,25 +8,25 @@ _From Wiki:_
 
 So in shell script you can use variables, for-loops etc.
 
-## Variables
+### Variables
 **syntax**  
-To create bars you just declare and assign them -->
-`foo=bar`   
-**DO NOT USE SPACES**   
+To _create vars_ you just declare and assign them -->
+`foo=bar` # **DO NOT USE SPACES**   
 
-To _access foo_ you use a `$` --> `$foo`  
+To _access foo_ you use a `$` --> `$foo`   
+
 For **string interpolation/substitution** you need to use double quotes -->  
 `"Foo has a value of $foo"` CORRECT  
 `'Foo has a value of $foo'` WRONG  
 
-## Functions
+### Functions
 **syntax**  
-To declare a function use '**fname** **()** **{** _functionbody_ **}**'
-To grab arguments from the command line instead of argv use "$number" to interpolate to your function body
+To declare a function use '**fname** **()** **{** _functionbody_ **}**'  
+To grab arguments from the command line instead of argv use `$numer` to interpolate to your function body  
 _example_
-	maked () {
+	mcd () {
 		mkdir -p "$1"
-		cd "$1"
+		cd "$1" 
 	}
 
 ## Using shell script
@@ -40,8 +40,8 @@ _example_
 **!!** - last cmd  
 **$?** - error from the previous cmd  
 **$$** - cmd process id  
-**{range}** - eg. touch foo{1,9} will touch foo1, foo2, foo3... foo9.  
-**?** - placeholder for a single number eg. dir? could equate to anything in range dir0-dir0, dir10+ would be ignored  
+**{range}** - eg. `touch foo{1,9}` will touch foo1, foo2, foo3... foo9.  
+**?** - placeholder for a single number eg. `dir?` could equate to anything in range dir0-dir0, dir10+ would be ignored  
 
 
 ### Logic**
@@ -63,5 +63,5 @@ process substitution
 ?? dont get it :D
 
 **-ne**  
-not equas
+not equals
 
