@@ -1,8 +1,8 @@
 Original Notes: [https://missing.csail.mit.edu/2020/course-shell/](https://missing.csail.mit.edu/2020/course-shell/)
 
-### shell - the basics
+## shell - the basics
 
-#### What is shell?
+### What is shell?
 Basic tool to interact with your computer - allows you full access to it's resources, it's a textual interface, GUI has it's limiations.
 
 Most platforms provide their own shells - examples:
@@ -10,14 +10,14 @@ Windows - PowerShell
 Linux - bash (Born Again SHell)
 MacOS - also bash (used by the terminal app)
 
-##### EXTRA
-_Useful:_ https://explainshell.com/
+> EXTRA
+> _Useful:_ https://explainshell.com/
 
 
-#### Getting started:
+### Getting started:
 It will probably already be installed on your platform, you can Google it if you don't know how to access it.
 
-When you open shell you see a prompt, that's customisable, but usually it's a combination of  
+When you open shell you see a **prompt**, that's customisable, but usually it's a combination of  
 [username@machinename currentpath]$  
 (basic form)  
 
@@ -35,8 +35,8 @@ _examples:_
 **NB.** When passing strings containt them in **single or double quotes**, or escape the white space with '\\'. (doesn't work in PowerShell??)
 
 
-#### How shell works:
-Shell knows, which program to execute when we type 'date' or 'echo', because the path value is stored in a variable on your file system (*environment variables* - examples would be your homefolder, some app paths etc.).  
+### How shell works:
+Shell knows, which program to execute when we type 'date' or 'echo', because the path value is stored in a variable on your file system (**environment variables** - examples would be your homefolder, some app paths etc.).  
 Shell script is basically a programming language, you execute commands, but can also use while loops, for loops, define functions, have variables etc.  
 
 Environment variables do not have to be defined whenever you start your shell - they are already set.  
@@ -45,22 +45,23 @@ _Useful:_ which [app name]
 \- will tell you which path it would use if you wanted to run it.
 
 
-### paths 
-Full locations of a resource in your file system. In Linux and MacOS everything is mounted to one root name space and then subdirectories are separated by '/'.  
-In Windows a '\' is used to separate directories and every partition has it's own root that has a letter assigned to it (eg. C:\ D:\).  
-##### EXTRA 
-That's because '/' had a different use in MS-DOS - more info [here](https://www.howtogeek.com/181774/why-windows-uses-backslashes-and-everything-else-uses-forward-slashes/)
+### on paths 
+Full locations of a resource in your file system. In Linux and MacOS everything is mounted to one root name space and then subdirectories are separated by `/`.  
+In Windows a `\` is used to separate directories and every partition has it's own root that has a letter assigned to it (eg. C:\ D:\).  
+> EXTRA 
+> That's because '/' had a different use in MS-DOS - more info [here](https://www.howtogeek.com/181774/why-windows-uses-backslashes-and-everything-else-uses-forward-slashes/)
 
-**Absolute paths** - 'full' paths - eg. /use/bin/ | C:/Users/%username%/Documents  
-**Relative paths** - path's relative to your current location - eg. ./newdir | './New Folder'.  
-(special directories - '.' and '..' - current and parent directory).  
+_Absolute paths_ - 'full' paths - eg. /use/bin/ | C:/Users/%username%/Documents  
+_Relative paths_ - path's relative to your current location - eg. ./newdir | './New Folder'.  
+(special directories - `.` and `..` - current and parent directory).  
 
 Generally any app we use wil by default **RUN IN THE CURRENT DIRECTORY (!) unless we give it specific arguments.**  
+
 
 ### commands - basics (flags / options (switches) / help) 
 Most programs take optional arguments that change their behaviour - options and flags usually start with - or -- (also / in Windows - eg. shutdown /r).
 Anything that takes a value is an option, anything that doesn't take a value is a flag.
-_Examples:_ _ls -l_ # you can use just ls, but ls -l give you a more detailed view
+_Examples:_ `ls -l` # you can use just ls, but ls -l give you a more detailed view
 
 **--help**  
 Most programs also implement --help (also -h or /? in Windows), if you add this to the program name it will print out some information about the program - typically usage information.  
@@ -83,14 +84,14 @@ Usage: _man ls_
 \- can combine with .. and . to jump up to a parent a directory or to a subdirectory of a current directory,
 \- can also combine with '-' to go 'back'.
 
-	cd ./subdir
-	cd ..
-	cd ../.. # would take you two directories up
-	cd - # takes you to the directory you were previously in (not in PowerShell)
+`cd ./subdir`
+`cd ..`
+`cd ../..` # would take you two directories up
+`cd -` # takes you to the directory you were previously in (not in PowerShell)
 
 _Useful:_ hitting <kbd>TAB</kbd> after typing the beginning of a directory/file name will auto-complete, choosing the first available option - hitting tab again and again will go through all options matching what you already typed.  
 
-_Useful:_ **~** always means home directory, you can use it as an argument for cd, ls etc. For example '~/documents' would go to a documents folder in your home directory.
+_Useful:_ `~` always means home directory, you can use it as an argument for cd, ls etc. For example _'~/documents'_ would go to a documents folder in your home directory.
 
 **ls**  
 \- list everything in the current directory - files and directories (including '.' and '..' directories).
@@ -134,30 +135,31 @@ You can chain commands by using streams - the primary streams are input steam an
 By default input is from terminal and output to terminal - but you can use shell to redirect these to/from a different source.
 
 **< - input**  
-\- Use '< [source] to change the input stream  
+\- Use `< [source]` to change the input stream  
 _< infile_ would mean the input for your command would be set to infile
 
 **> - output**  
-\- Use '< [source] to change the output stream  
+\- Use `< [source]` to change the output stream  
 _< outfile_ would mean the ouyput of your command would be set to outfile
 
 **cat**  
 \- prints contents of a file - if you combine with < & > you can essentially copy it's contents to another file  
-_cat < myoldfile > mynewfile_
+`cat < myoldfile > mynewfile`
 
 **>>**  
 \- appends to a file
 
 **| (pipe)**   
 \- make whatever you do on the left | output to the right
-somecommand | myfile.txt
+`somecommand | myfile.txt`
 
 **tail**  
 \- grabs the last lines of its input (lets you read the end of the file)
 
 **combining it all**  
-_somecommand | cat > result.txt_  
-on the left we do some operations | on the right we use cat to write to a file named result.txt - what we're writing is the result of the command from the left
+\- on the left we do some operations | on the right we use cat to write to a file named result.txt - what we're writing is the result of the command from the left
+`somecommand | cat > result.txt`
+
 
 
 ### Linux and MacOS - root user
