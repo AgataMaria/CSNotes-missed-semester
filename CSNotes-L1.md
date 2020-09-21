@@ -21,9 +21,8 @@ When you open shell you see a **prompt**, that's customisable, but usually it's 
 [username@machinename currentpath]$  
 (basic form)  
 
-On the shell prompt you get to write commands - usually this is a name of an app + arguments.  
+On the shell prompt you get to write **commands** - usually this is a name of an app + arguments.  
 _examples:_  
-
 **date**  
 \- runs the date app, with no arguments displays current date and time.
 
@@ -35,13 +34,13 @@ _examples:_
 **NB.** When passing strings containt them in **single or double quotes**, or escape the white space with '\\'. (doesn't work in PowerShell??)
 
 
-### How shell works:
+### What the shell?
 Shell knows, which program to execute when we type 'date' or 'echo', because the path value is stored in a variable on your file system (**environment variables** - examples would be your homefolder, some app paths etc.).  
 Shell script is basically a programming language, you execute commands, but can also use while loops, for loops, define functions, have variables etc.  
 
 Environment variables do not have to be defined whenever you start your shell - they are already set.  
 
-_Useful:_ which [app name]  
+_Useful:_ `which [app name]`
 \- will tell you which path it would use if you wanted to run it.
 
 
@@ -65,14 +64,14 @@ _Examples:_ `ls -l` # you can use just ls, but ls -l give you a more detailed vi
 
 **--help**  
 Most programs also implement --help (also -h or /? in Windows), if you add this to the program name it will print out some information about the program - typically usage information.  
-How to read: ls [OPTION]... [FILE]...  # here **'...'** means 1 or more, **'[ ]'** means optional.  
+How to read: `ls [OPTION]... [FILE]...`  # here `...` means 1 or more, `[ ]` means optional.  
 Usage: _ls --help_
 
 **man**  
 A program that takes a name of another program as an argument and gives you it's manual page. It's usually easier to read and sometimes has more info than --help.  
 Usage: _man ls_
 
-**NB.** This is a program so to go back you need to quit it - by hitting 'q'
+**NB.** This is a program so to go back you need to **quit it - by hitting 'q'**
 
 
 ### commands - navigating file system
@@ -80,13 +79,13 @@ Usage: _man ls_
 \- to find out where you currently are - use commant pwd (print working directory).
 
 **cd**  
-\- change current directory,
-\- can combine with .. and . to jump up to a parent a directory or to a subdirectory of a current directory,
+\- change current directory,  
+\- can combine with .. and . to jump up to a parent a directory or to a subdirectory of a current directory,  
 \- can also combine with '-' to go 'back'.
 
-`cd ./subdir`
-`cd ..`
-`cd ../..` # would take you two directories up
+`cd ./subdir`  
+`cd ..`  
+`cd ../..` # would take you two directories up  
 `cd -` # takes you to the directory you were previously in (not in PowerShell)
 
 _Useful:_ hitting <kbd>TAB</kbd> after typing the beginning of a directory/file name will auto-complete, choosing the first available option - hitting tab again and again will go through all options matching what you already typed.  
@@ -94,13 +93,13 @@ _Useful:_ hitting <kbd>TAB</kbd> after typing the beginning of a directory/file 
 _Useful:_ `~` always means home directory, you can use it as an argument for cd, ls etc. For example _'~/documents'_ would go to a documents folder in your home directory.
 
 **ls**  
-\- list everything in the current directory - files and directories (including '.' and '..' directories).
-\- can take a path (absolute or relative) as an argument, so running 'ls ./subdir' will list all files and dirs in the subdirectory. 
+\- list everything in the current directory - files and directories (including **[.]** and **[..]** directories).  
+\- can take a path (absolute or relative) as an argument, so running _ls ./subdir_ will list all files and dirs in the subdirectory.  
 (ls with -l gives you a detailed view - more info below, check ls --help for full usage)
 
 **mv**  
-\- let's you move the file... and also rename it :D
-mv [previous path] \[new path]  <-- if the last bit changes you're effectively renaming the file
+\- let's you move the file... and also rename it :grin:  
+`mv [previous path] \[new path]`  <-- if the last bit changes you're effectively renaming the file
 
 **cp**  
 \- let's you copy a file
@@ -109,7 +108,7 @@ mv [previous path] \[new path]  <-- if the last bit changes you're effectively r
 \- let's you remove a file (but not a dir!) - you can use a dir path with the -r flag to do this recursively (to empty a folder)
 
 **rmdir**  
-\- let's you remove a dir... but only if it's empty
+\- let's you remove a dir... but only if it's empty :grin:
 
 **mkdir**  
 \- let's you create a new directory
@@ -163,16 +162,16 @@ _< outfile_ would mean the ouyput of your command would be set to outfile
 
 
 ### Linux and MacOS - root user
-Special user - like Administrator (built-in) in Windows.  
+Special user - like _Administrator (built-in)_ in Windows.  
 Has a user number 0.  
 **root user can do whatever it wants on your system.**  
-**#** youll see a pound symbol if you're running as root.  
-_# somecommand_ syntax basically means run this command as root.  
+`#` youll see this symbol instead of `$` if you're running as root.  
+`# somecommand` syntax basically means run this command as root.  
 
 **sudo**  
 'Do as SU (superuser)' - a program that let's you elevate access so you can use a a user with sudo rights instead of root.
 
-_sudo somecommand_ you just need to preceed whatever you want to do with sudo
+Usage: _sudo somecommand_ you just need to preceed whatever you want to do with sudo
 
 **NB.** Permission denied example - TL;DR, shell does not have elevated permissions itself, use root. 
 In Linux 'everything is a file', so is screen brightness. We tried _sudo echo 500 > brightness_, but this wouldn't work as it was the shell that was trying to open the brightness file, not sudo.
