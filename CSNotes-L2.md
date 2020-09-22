@@ -107,6 +107,7 @@ Reading man pages can be tricky, but you can use [tldr](#tldr)
 
 #### tldr
 A good tool to install, articles submitted by community, good examples, nicely formatted 
+
 === 
 
 ### find by name
@@ -137,7 +138,8 @@ if you use it with the -R swith it will **search an entire directory.**
 
 #### ripgrep
 fast and more robust than grep
-also has a `--files-wihout-match` option thats useful  
+also has a `--files-wihout-match` option thats useful.
+
 ===
 
 ### shell history
@@ -147,6 +149,7 @@ also has a `--files-wihout-match` option thats useful
 
 #### fzf
 .
+
 ===
 
 ### navigation
