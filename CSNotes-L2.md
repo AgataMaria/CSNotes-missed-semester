@@ -28,6 +28,7 @@ _example_
 		cd "$1" 
 	}
 
+---
 ## Using shell script
 :question::sweat_smile: whats vim?  
 
@@ -80,7 +81,7 @@ if statements are written slightly differently...
 
 so this reads if error from previous command is not equal zero (if there _is_ an error... otherwise command would print 0) then _do sth_  
 
-
+---
 ## shell tools - good to know
 
 ### beyond bash
@@ -101,6 +102,8 @@ running scripts in isolation and loading shell have their differences
 :question::sweat_smile: not sure what he means? ~27min  
 
 
+
+
 ### manual & tldr
 #### man
 `man [cmd]` is super useful for checking command usage and options  
@@ -111,7 +114,8 @@ Reading man pages can be tricky, but you can use [tldr](#tldr)
 #### tldr
 A good tool to install, articles submitted by community, good examples, nicely formatted 
 
---- 
+
+
 
 ### find by name
 #### find
@@ -133,6 +137,9 @@ Usage: `locate shell`
 
 :question::sweaty-smile: What was that about updatedb??
 
+
+
+
 ### find by content
 #### grep
 grep **finds a string** in a specified file, but  
@@ -143,7 +150,8 @@ if you use it with the -R swith it will **search an entire directory.**
 fast and more robust than grep
 also has a `--files-wihout-match` option thats useful.
 
----
+
+
 
 ### shell history
 #### history
@@ -151,9 +159,10 @@ also has a `--files-wihout-match` option thats useful.
 #### <kbd>Ctrl</kbd> + <kbd>R</kbd>
 
 #### fzf
-.
 
----
+
+
+
 
 ### navigation
 
