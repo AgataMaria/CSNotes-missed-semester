@@ -68,9 +68,9 @@ process substitution
 **-ne**  
 not equals
 
-:question::sweat_smile: /dev/null  <-- special device in UNIX? need to read more
+:grey_exclamation: /dev/null  <-- special device in UNIX? need to read more
 
-15:00 didn't get the grep "$file" > /dev/null 2> /dev/null <-- what did he mean baout 2>?
+~15min didn't get the grep "$file" > /dev/null 2> /dev/null <-- what did he mean baout 2>?
 
 **if**  
 if statements are written slightly differently...
@@ -80,16 +80,18 @@ if statements are written slightly differently...
 
 so this reads if error from previous command is not equal zero (if there _is_ an error... otherwise command would print 0) then _do sth_  
 
+
 ## shell tools - good to know
 
 ### beyond bash
 You can write scripts in a lot of different languages - eg. python  
-\- in python you need to `import sys` as python does not interact with system by default
+\- in python you need to `import sys` as python does not interact with system by default  
 \- to grab cmd arg in python use `argv[number]` ($number in bash)  
 
-\- to run a scrip in python from shell you have two options:  
+\- to run a script in python from shell you have two options:  
 	1. `python [path]` to use python and parse 'path' as an argument
 	2. add `#!use/bin/env python` to find 'python' in 'env'
+
 
 ### shellcheck - bash
 `shellcheck [path]` let's you check your script - it gives warnings and advisories for best practices
@@ -97,6 +99,7 @@ You can write scripts in a lot of different languages - eg. python
 **NB.** running vs. loading bash
 running scripts in isolation and loading shell have their differences  
 :question::sweat_smile: not sure what he means? ~27min  
+
 
 ### manual & tldr
 #### man
@@ -108,7 +111,7 @@ Reading man pages can be tricky, but you can use [tldr](#tldr)
 #### tldr
 A good tool to install, articles submitted by community, good examples, nicely formatted 
 
-=== 
+--- 
 
 ### find by name
 #### find
@@ -140,7 +143,7 @@ if you use it with the -R swith it will **search an entire directory.**
 fast and more robust than grep
 also has a `--files-wihout-match` option thats useful.
 
-===
+---
 
 ### shell history
 #### history
@@ -150,7 +153,7 @@ also has a `--files-wihout-match` option thats useful.
 #### fzf
 .
 
-===
+---
 
 ### navigation
 
