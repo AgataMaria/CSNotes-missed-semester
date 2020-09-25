@@ -131,6 +131,10 @@ How to read:
 
 ### commands - IO, chaining and writing to files
 You can chain commands by using streams - the primary streams are input steam and output stream (standard input output stdio).
+> There are actually three primary streams - stdin, stdin and stderr -  
+> from mssqltips.com:  
+> With Linux every command executed has three available streams that can be redirected. Those streams are the standard input which is the way commands get interaction, the standard output that is where the command will show its results and finally the standard error which is the stream where the error messages will be sent. Before continuing, let me remind you that on Linux systems everything is a file, even these streams I told you about.  
+
 By default input is from terminal and output to terminal - but you can use shell to redirect these to/from a different source.
 
 **< - input**  
