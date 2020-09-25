@@ -56,8 +56,9 @@ _Relative paths_ - path's relative to your current location - eg. ./newdir | './
 
 Generally any app we use wil by default **RUN IN THE CURRENT DIRECTORY (!) unless we give it specific arguments.**  
 
-
-### commands - basics (flags / options (switches) / help) 
+---
+## comands
+### basics (flags / options (switches) / help) 
 Most programs take optional arguments that change their behaviour - options and flags usually start with - or -- (also / in Windows - eg. shutdown /r).
 Anything that takes a value is an option, anything that doesn't take a value is a flag.
 _Examples:_ `ls -l` # you can use just ls, but ls -l give you a more detailed view
@@ -74,7 +75,7 @@ Usage: _man ls_
 **NB.** This is a program so to go back you need to **quit it - by hitting 'q'**
 
 
-### commands - navigating file system
+### navigating file system
 **pwd**  
 \- to find out where you currently are - use commant pwd (print working directory).
 
@@ -129,24 +130,26 @@ How to read:
 **NB.** For directories permissions work like this - Read means list contents, Write means rename, create or remove files within this directory, Execute allows you to ENTER this directory - you need permission on this directory and all it's parent directories.
 
 
-### commands - IO, chaining and writing to files
+### commands - streams, pipeline & writing to files
 You can chain commands by using streams - the primary streams are input steam and output stream (standard input output stdio).
 > There are actually three primary streams - stdin, stdin and stderr -  
 > from mssqltips.com:  
 > With Linux every command executed has three available streams that can be redirected. Those streams are the standard input which is the way commands get interaction, the standard output that is where the command will show its results and finally the standard error which is the stream where the error messages will be sent. Before continuing, let me remind you that on Linux systems everything is a file, even these streams I told you about.  
 
-	/dev/stdin 		0 	Standard Input
+	/dev/stdin 	0 	Standard Input
 	/dev/stdout 	1 	Standard Output
 	/dev/stderr 	2 	Standard Error
 >All of these three file descriptors point by default to the file /dev/tty which is the current terminal in use. You can execute the tty command to see which terminal you are running (i.e. /dev/tty1 /dev/tty2)
 
 >By default input is from terminal and output to terminal - but you can use shell to redirect these to/from a different source.
 
-- **< (redirection of input / from)**  
+- **<  
+(redirection of input / from)**  
 \- Use `< [source]` to change the input stream  
 _< infile_ would mean the input for your command would be set to infile
 
-- **> (redirection of output / to)**  
+- **>  
+(redirection of output / to)**  
 \- Use `< [source]` to change the output stream  
 _< outfile_ would mean the ouyput of your command would be set to outfile
 
@@ -157,7 +160,8 @@ _< outfile_ would mean the ouyput of your command would be set to outfile
 - **>>**  
 \- appends to a file
 
-- **| (pipe)**   
+- **|  
+(pipe)**   
 \- *make whatever you do on the left | output to the right*
 `somecommand | myfile.txt`
 > on diff between redirections and pipes:  
