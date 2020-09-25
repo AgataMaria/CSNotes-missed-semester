@@ -134,8 +134,13 @@ You can chain commands by using streams - the primary streams are input steam an
 > There are actually three primary streams - stdin, stdin and stderr -  
 > from mssqltips.com:  
 > With Linux every command executed has three available streams that can be redirected. Those streams are the standard input which is the way commands get interaction, the standard output that is where the command will show its results and finally the standard error which is the stream where the error messages will be sent. Before continuing, let me remind you that on Linux systems everything is a file, even these streams I told you about.  
+> Name 	File Descriptor 	Description
+	/dev/stdin 		0 	Standard Input
+	/dev/stdout 	1 	Standard Output
+	/dev/stderr 	2 	Standard Error
+>All of these three file descriptors point by default to the file /dev/tty which is the current terminal in use. You can execute the tty command to see which terminal you are running (i.e. /dev/tty1 /dev/tty2)
 
-By default input is from terminal and output to terminal - but you can use shell to redirect these to/from a different source.
+>By default input is from terminal and output to terminal - but you can use shell to redirect these to/from a different source.
 
 **< - input**  
 \- Use `< [source]` to change the input stream  
