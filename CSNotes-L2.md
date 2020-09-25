@@ -1,5 +1,5 @@
 
-Official Notes: [https://missing.csail.mit.edu/2020/shell-tools/](https://missing.csail.mit.edu/2020/shell-tools/)
+Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/shell-tools/](https://missing.csail.mit.edu/2020/shell-tools/)
 
 ## Intro
 
@@ -20,7 +20,7 @@ For **string interpolation/substitution** you need to use double quotes -->
 
 ### Functions
 To declare a function use '**fname** **()** **{** _functionbody_ **}**'  
-To grab arguments from the command line instead of argv use `$numer` to interpolate to your function body  
+To grab arguments from the command line instead of argv use `$number` to interpolate to your function body  
 _example_
 
 	mcd () {
@@ -33,18 +33,18 @@ _example_
 :question::sweat_smile: whats vim?  
 
 ### Argument shorthands
-**$0** - name of the script   
-**$_** - last argument of the previous cmd  
-**$#** - number of arguments  
-**$@** - all arguments  
-**!!** - last cmd  
-**$?** - error from the previous cmd  
-**$$** - cmd process id  
-**{range}** - eg. `touch foo{1,9}` will touch foo1, foo2, foo3... foo9.  
+- **$0** - name of the script   
+- **$_** - last argument of the previous cmd  
+- **$#** - number of arguments  
+- **$@** - all arguments  
+- **!!** - last cmd  
+- **$?** - error from the previous cmd  
+- **$$** - cmd process id  
+- **{range}** - eg. `touch foo{1,9}` will touch foo1, foo2, foo3... foo9.  
 also works with letters, but you use .. instead of , - `mkdir user{A..Z}` would create dirs userA, userB, userC... user Z  
 can combine and do `touch {foo,bar}/{a..c}`  
-**?** - placeholder for a single number eg. `dir?` could equate to anything in range dir0-dir0, dir10+ would be ignored  
-** \* ** - wildcard, can be replaced by any number of characters - eg. `*.jpg` would mean anything that ends in '.jpg'  
+- **?** - placeholder for a single number eg. `dir?` could equate to anything in range dir0-dir0, dir10+ would be ignored  
+- \* - wildcard, can be replaced by any number of characters - eg. `*.jpg` would mean anything that ends in '.jpg'  
 
 
 
@@ -71,7 +71,7 @@ not equals
 
 :grey_exclamation: /dev/null  <-- special device in UNIX? need to read more
 
-~15min didn't get the grep "$file" > /dev/null 2> /dev/null <-- what did he mean baout 2>?
+~15min didn't get the grep "$file" > /dev/null 2> /dev/null <-- what did he mean about 2>? :sweat_smile:
 
 **if**  
 if statements are written slightly differently...
@@ -79,22 +79,22 @@ if statements are written slightly differently...
 	if [[ "$?" -ne 0]]; then
 		# commands
 
-so this reads if error from previous command is not equal zero (if there _is_ an error... otherwise command would print 0) then _do sth_  
+so this reads: _if error from previous command is not equal zero_ (if there _is_ an error... when there's no errors command prints 0 to stderr) then _do sth_  
 
 ---
 ## shell tools - good to know
+there's tons of tools built-in or available to download for bash, see some below
 
-### beyond bash
+### oh btw - beyond bash
 You can write scripts in a lot of different languages - eg. python  
 \- in python you need to `import sys` as python does not interact with system by default  
 \- to grab cmd arg in python use `argv[number]` ($number in bash)  
-
 \- to run a script in python from shell you have two options:  
-	1. `python [path]` to use python and parse 'path' as an argument
+	1. `python [path]` to use python and parse 'path' as an argument  
 	2. add `#!use/bin/env python` to find 'python' in 'env'
 
 
-### shellcheck - bash
+### :ok_hand: shellcheck - bash
 `shellcheck [path]` let's you check your script - it gives warnings and advisories for best practices
 
 **NB.** running vs. loading bash
@@ -104,7 +104,7 @@ running scripts in isolation and loading shell have their differences
 
 
 
-### manual & tldr
+### :spiral_notepad: manual & tldr
 #### man
 `man [cmd]` is super useful for checking command usage and options  
 remembers it's a programm so you need to exit it with 'q' before you can go back to shell  
@@ -117,7 +117,7 @@ A good tool to install, articles submitted by community, good examples, nicely f
 
 
 
-### find by name
+### :mag: find by name
 #### find
 `find` - a tool that comes with almost every UNIX(like) system  
 _Usage:_ :question: need to find good examples    
@@ -140,7 +140,7 @@ Usage: `locate shell`
 
 
 
-### find by content
+### :mag: find by content
 #### grep
 grep **finds a string** in a specified file, but  
 if you use it with the -R swith it will **search an entire directory.**
@@ -153,7 +153,7 @@ also has a `--files-wihout-match` option thats useful.
 
 
 
-### shell history
+### :scroll: shell history
 #### history
 
 #### <kbd>Ctrl</kbd> + <kbd>R</kbd>
@@ -164,5 +164,5 @@ also has a `--files-wihout-match` option thats useful.
 
 
 
-### navigation
+### :arrow_heading_down: navigation
 
