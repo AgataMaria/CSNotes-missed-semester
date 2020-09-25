@@ -134,7 +134,7 @@ You can chain commands by using streams - the primary streams are input steam an
 > There are actually three primary streams - stdin, stdin and stderr -  
 > from mssqltips.com:  
 > With Linux every command executed has three available streams that can be redirected. Those streams are the standard input which is the way commands get interaction, the standard output that is where the command will show its results and finally the standard error which is the stream where the error messages will be sent. Before continuing, let me remind you that on Linux systems everything is a file, even these streams I told you about.  
-> Name 	File Descriptor 	Description
+
 	/dev/stdin 		0 	Standard Input
 	/dev/stdout 	1 	Standard Output
 	/dev/stderr 	2 	Standard Error
@@ -142,26 +142,29 @@ You can chain commands by using streams - the primary streams are input steam an
 
 >By default input is from terminal and output to terminal - but you can use shell to redirect these to/from a different source.
 
-**< - input**  
+- **< (redirection of input / from)**  
 \- Use `< [source]` to change the input stream  
 _< infile_ would mean the input for your command would be set to infile
 
-**> - output**  
+- **> (redirection of output / to)**  
 \- Use `< [source]` to change the output stream  
 _< outfile_ would mean the ouyput of your command would be set to outfile
 
-**cat**  
-\- prints contents of a file - if you combine with < & > you can essentially copy it's contents to another file  
+- **cat**  
+\- *prints contents of a file* - if you combine with `<` & `>` you can essentially copy it's contents to another file  
 `cat < myoldfile > mynewfile`
 
-**>>**  
+- **>>**  
 \- appends to a file
 
-**| (pipe)**   
-\- make whatever you do on the left | output to the right
+- **| (pipe)**   
+\- *make whatever you do on the left | output to the right*
 `somecommand | myfile.txt`
+> on diff between redirections and pipes:  
+> from mssqltips.com:
+> The redirections are used to send the output stream to a file and to send the content of a given file to the input stream. In contrary, a pipe connects two commands by sending the output stream of the first command to the input stream of the second command. This connection is performed before any redirections specified by the command. 
 
-**tail**  
+- **tail**  
 \- grabs the last lines of its input (lets you read the end of the file)
 
 **combining it all**  
