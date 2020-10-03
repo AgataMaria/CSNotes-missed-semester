@@ -14,7 +14,7 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 \- it works because shell sends a signal called **SIGINT** (SIGnal INTerrupt) that tells the program to stop itself  
 \- there are many **other signals** available - you can lookup using `man signal` or go to [man7.org](https://man7.org/linux/man-pages/man7/signal.7.html)  
 
-- <kbd>Ctrl</kbd> + <kbd>\</kbd>  
+- <kbd>Ctrl</kbd> + <kbd>\\</kbd>  
 \- **quits** the execution of the program (**SIGQUIT**)  
 
 - <kbd>Ctrl</kbd> + <kbd>Z</kbd>  
@@ -24,13 +24,13 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 \- **runs** the command **in the background**  
 \- this gives you access to shell & starts the process (otherwise if the command is waiting for input from the shell you can't run any other commands)
 
-- `jobs` 
+- `jobs`  
 \- **lists jobs** currently running
 
 - `bg %n`  
 \- **resumes** a suspended job - %n is a job number (use `jobs` to get the number)  
 
-- Other notes  
+### Other notes  
 \- Don't rely on SIGKILL - it kills the process, but can leave orphaned processes, it only targets current process  
 
 
