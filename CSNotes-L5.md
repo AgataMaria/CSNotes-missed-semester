@@ -8,7 +8,7 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 - ...and if you create keys you won't need to authenticate with a password, but _keep your keys safe - add a passphrase to protect the private key & only store the public key on servers_.  
 - `htop` - cute process viewer for Linux :sparkles:  
 
-
+---
 
 
 ## Job Control :video_game:
@@ -99,13 +99,13 @@ You can rename windows after they are open.
 \- **zoom** - use once to zoom in and again to zoom out  
 
 ## Dot files :page_facing_up:
-DOT FILES - Allow you to configure your shell so that it works for you.
+DOT FILES - Allow you to configure apps (like your shell) so that they work for you.
 
 #### side note - Aliases
-You can **create** aliases for commands you don't want to keep typing over and over again. To do this in your prompt type `alias alias_name="the command"`  for example `alias gs="git status"` will mean you can just type `gs` next time you want to use git status.  
-
-You can **rename** aliases in the same way - `alias new_alias=old_alias`.  
-You can **check** existing aliases by typing `alias alias_name` - you will see the definition  
+> You can **create** aliases for commands you don't want to keep typing over and over again. To do this in your prompt type `alias alias_name="the command"`  for example `alias gs="git status"` will mean you can just type `gs` next time you want to use git status.  
+>
+>You can **rename** aliases in the same way - `alias new_alias=old_alias`.  
+>You can **check** existing aliases by typing `alias alias_name` - you will see the definition  
 
 ### .dotfiles  
 Most shell programs have a text based config file - a dotfile.  
