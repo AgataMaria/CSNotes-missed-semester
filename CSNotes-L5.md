@@ -1,8 +1,8 @@
 Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line/](https://missing.csail.mit.edu/2020/command-line/)  
 
 ## TL;DR & personal favourites
-- `SIGNAL` - shell communicates with programs through signals, **there's more to life than ^C** - you can not only interrupt, but also pause, abort, continue, report... for full list `man signal`  
-- Stop your jobs from being interrupted - ou can _use `nohup`_ or _import signal_ in your app and change the default behaviour (eg. override SIGINT) - but you can't override SIGKILL  
+- `SIGNAL` - shell communicates with programs through signals, _there's more to life than ^C_ - you can not only interrupt, but also pause, abort, continue, report... for a full list `man signal`  
+- Stop your jobs from being interrupted - you can use _nohup_ or _import signal_ to your app and change the default behaviour (eg. override SIGINT) - but you can't override SIGKILL  
 
 
 
@@ -20,7 +20,7 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 \- **quits** the execution of the program (**SIGQUIT**)  
 
 - <kbd>Ctrl</kbd> + <kbd>Z</kbd>  
-\- **suspends** the program (**SIGSTOP**)  
+\- **suspends** the program (**SIGSTOP**) - use _bg_ to resume  
 
 - **&** -  `[cmd] &`   
 \- **runs** the command **in the background**  
@@ -29,10 +29,10 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 - `jobs`  
 \- **lists jobs** currently running
 
-- `bg %n`  
+- **bg** - `bg %n`  
 \- **resumes** a suspended job - %n is a job number (use `jobs` to get the number)  
  
-- `kill`  
+- `kill %n`  
 \- there are many ways to kill - you can **use a modifier** to specify **how you want to kill** the job  
 \- examples:  
 `kill -STOP %n` - _pauses_ the process (%n is a job number)  
@@ -44,33 +44,71 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 
 
 ## Terminal Multiplexers
-### Say waht now?
-It exists so that you **don't need to use multiple terminal windows** by creating an **environment** for you to work in  
-`tmux` is an example (recommended in the course)  
+### Say what now?
+Sounds futuristic, I know. They exists so that you **don't need to use multiple terminal windows**, by creating an **environment** for you to work in where you can have multiple sessions etc  
+`tmux` is an example of a terminal multiplexer (recommended in the course)  
 > tmux is a terminal multiplexer for Unix-like operating systems. It allows multiple terminal sessions to be accessed simultaneously in a single window.  
 
 ### tmux - basics
-- nesting :nesting_dolls:
+- tutorial
+[recommended tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)  
+
+- nesting  
 tmux has **sessions**  
-\	Sessions have **windows**  
-\		Windows have **panes**  
-(just like in editors you have tabs, which have windows, which have buffers - nesting!  
+\-\>Sessions have **windows**  
+\-\-\-\>Windows have **panes**  
+(just like in editors you have tabs, which have windows, which have buffers, or in browsers you have sessions, with windows and tabs - just to make it easier)   
 
-- control
-<kbd>Ctrl</kbd> + <kbd>B</kbd> + <kbd>D</kbd>  - default  
-<kbd>Ctrl</kbd> + <kbd>A</kbd> + <kbd>D</kbd>  - remapped by many users  
-\-  dettaches from the session (like minimising - the process is still running)  
-  
-`tmux a`  
-\- reattaches to the session  
-  
+- control  
+For all commands you need to use a **prefix key**:
+<kbd>Ctrl</kbd> + <kbd>B</kbd> - default  
+<kbd>Ctrl</kbd> + <kbd>A</kbd> - remapped by many users for convenience  
+... followed by a command key. :point_down:  
+
+prefix + <kbd>?</kbd>  
+\- for a **list of bind keys**  
+
+`tmux d` or prefix + <kbd>D</kbd>  
+\-  **dettaches** from the session (like minimising - the process is still running)  
+`tmux a` or prefix + <kbd>A</kbd>  
+\- **reattaches** to the session  
 `tmux new -t [session name]`  
-\- starts a new session names [session name] \(you get a number by default)  
-
-`tmux ls` - lists sessions  
-  
-
+\- starts a **new session named** _session name_ (you get a number by default if you don't specify a name)  
+`tmux ls`  
+\- **lists** sessions  
+`tmux c` or prefix + <kbd>C</kbd>  
+\- create a new **window**  
+prefix + <kbd>P</kbd>  
+\- **previous** window  
+prefix + <kbd>N</kbd>  
+\- **next** window   
+prefix + <kbd>[windows number]</kbd>  
+\- jump to a specific window  
+You can rename windows after they are open.  
+prefix + <kbd>"</kbd>  
+\- pane - **vertical split**   
+prefix + <kbd>%</kbd>  
+\- pane - **horizontal split**   
+prefix + <kbd>←↓↑→</kbd>  
+\- **move** between he panes   
+prefix + <kbd>Z</kbd>  
+\- **zoom** - use once to zoom in and again to zoom out  
 
 ## Dot files
+DOT FILES - Allow you to configure your shell so that it works for you.
+
+#### side note - Aliases
+You can **create** aliases for commands you don't want to keep typing over and over again. To do this in your prompt type `alias alias_name="the command"`  for example `alias gs="git status"` will mean you can just type `gs` next time you want to use git status.  
+
+You can **rename** aliases in the same way - `alias new_alias=old_alias`.  
+You can **check** existing aliases by typing `alias alias_name` - you will see the definition  
+
+### .dotfiles  
+Most shell programs have a text based config file - a dotfile.  
+For historical reasons names begin with a dot, contain config for all sort.  
+
+**Programs + dotfiles**  
+- **bash** - .bashrc
+
 
 ## Remote machines
