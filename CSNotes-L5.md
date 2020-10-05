@@ -138,6 +138,7 @@ Symbolic Links show as `'Symlink Name' -> '/targets/actual/full/path` when you u
 - `ssh username@remote_address`  
 If you use just the **ssh** command alone, the shell emulator will switch to the remote machine emulator (so in your window you will see the remote machine's shell)  
 - You can either type in the password for a user that's authorised to use the remote machine, or use a key  
+- You can also add commands after `ssh username@remote_address` to execute them, it's pretty neat  
 
 ### Keys  
 - Use `ssh-keygen` to generate a key ([docs](https://www.ssh.com/ssh/keygen/))  
