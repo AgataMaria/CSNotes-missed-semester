@@ -109,20 +109,20 @@ DOT FILES - Allow you to configure apps (like your shell) so that they work for 
 
 ### .dotfiles  
 Most shell programs have a text based config file - a dotfile.  
-For historical reasons names begin with a dot, contain config for all sort.  
+For historical reasons names begin with a dot, contain config for all sorts.  
 
 Examples?  
 - **bash** - .bashrc  
 - **vim** - .vimrc  
 These files will hold config for these particular applications.  If you want to configure any of the apps you're using just google search their dotfiles.  
 
-How to know what to configure?
+How to know what to configure?  
 There is a lot of repos **on github**, folks configuring their apps and sharing the config - **vet before you get!**  
 Use lecture resources.  
 
-Where do dotfiles live?
-By default - you need to check per app.  
-People usually store all of them in one folder,create Symbolic Links (**symlinks**) to the actual location and put it in the location where the system (or applications looking for other applications) expects the dotfile to be.  
+Where do dotfiles live?  
+By default - ... you need to check per app.  
+People usually store all of them in one folder, then create Symbolic Links (**symlinks**) to the actual location and put it in the location where the system (or applications looking for other applications) expects the dotfile to be.  
 Symbolic Links show as `'Symlink Name' -> '/targets/actual/full/path` when you use `ls -l` - an example in Windows would be _'My Documents' -> /c/Users/%username%/Documents_  
 
 **GNU Stow** is a good link for managing symlinks - you can add them safely. Or you can use **ln** to add them yourself -> `ln -s source_file symlink_fyle`  
@@ -135,16 +135,16 @@ Symbolic Links show as `'Symlink Name' -> '/targets/actual/full/path` when you u
 - you can use DNS names or IP addresses to [connect](#Connecting)  
 
 ### Connecting   
-- You can either type in the password for a user that's authorised to use the remote machine, or use a key  
 - `ssh username@remote_address`  
 If you use just the **ssh** command alone, the shell emulator will switch to the remote machine emulator (so in your window you will see the remote machine's shell)  
+- You can either type in the password for a user that's authorised to use the remote machine, or use a key  
 
 ### Keys  
-- Use ssh-keygen to generate a key ([docs](https://www.ssh.com/ssh/keygen/))  
+- Use `ssh-keygen` to generate a key ([docs](https://www.ssh.com/ssh/keygen/))  
 - Key has two parts - private and public - the public key can be shared with remote machines  
-- Passphrase protect your private key!  
+- Passphrase **protect your private key**!  
 - Key's are stored in dif places on different systems, check documentation  
-- You need to copy the key to the server you will be connecting to, you can try to cat & tee it from your local machine to the server or use `ssh-copy-id username@server`  
+- You need to copy the key to the server you will be connecting to, you can try to _cat & tee_ it from your local machine to the server or use `ssh-copy-id username@server`  
 
 ### Executing commands  
 - You can then execute the commands on the server by typing `ssh [connection details] [some_cmd]`  
@@ -158,12 +158,14 @@ If you use just the **ssh** command alone, the shell emulator will switch to the
 
 - for **multiple files** you can use `rsync`  
 \- It's amazing because it detects duplicates  
-\- check flags  
+\- check flags, has some extra options  
+\- the alternative is rcp, but dont use it.  
 
 - you can also use cat + tee  
 
+
 ### Config  
-- Config file let's you specify an alias for a host and all connecion details so you can then just call `ssh alias`  
+- Config file let's you specify an alias for a host and all connecion details so you can then just call `ssh alias` and not worry about lengthy commands  
 - Other programs will also use the ssh config if they need to use ssh for their jobs  
 
 
