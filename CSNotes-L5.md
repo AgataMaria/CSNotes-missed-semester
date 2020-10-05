@@ -1,16 +1,16 @@
 Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line/](https://missing.csail.mit.edu/2020/command-line/)  
 
-## TL;DR & personal favourites
+## TL;DR & personal favourites :icecream:
 - `SIGNAL` - shell communicates with programs through signals, _there's more to life than ^C_ - you can not only interrupt, but also pause, abort, continue, report... for a full list `man signal`  
 - Stop your jobs from being interrupted - you can use _nohup_ or _import signal_ to your app and change the default behaviour (eg. override SIGINT) - but you can't override SIGKILL  
-- You can really make the cmd line environment work for you if you configure it - use dotfiles to change the default settings and tmux to use more than one shell window within one emulator window  
-- You can control machines remotely through SSH  
+- You can really make the cmd line environment work for you if you configure it - use _dotfiles_ to change the default settings and _terminal multiplexers_ to use more than one shell window within one emulator window  
+- You can control machines remotely through _SSH (secure socket shell)_  
 - ...and if you create keys you won't need to authenticate with a password, but _keep your keys safe - add a passphrase to protect the private key & only store the public key on servers_.  
 
 
 
 
-## Job Control
+## Job Control :video_game:
 
 ### Hotkeys & cmds
 
@@ -53,14 +53,14 @@ Sounds futuristic, I know. They exists so that you **don't need to use multiple 
 > tmux is a terminal multiplexer for Unix-like operating systems. It allows multiple terminal sessions to be accessed simultaneously in a single window.  
 
 ### tmux - basics
-- tutorial
+- tutorial  
 [recommended tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)  
 
 - nesting  
-tmux has **sessions**  
-\-\>Sessions have **windows**  
-\-\-\-\>Windows have **panes**  
-(just like in editors you have tabs, which have windows, which have buffers, or in browsers you have sessions, with windows and tabs - just to make it easier)   
+\| tmux has **sessions**  
+\| \-\>Sessions have **windows**  
+\| \-\-\-\>Windows have **panes**  
+(just like in editors you have tabs, which have windows, which have buffers, or in browsers you have sessions, with windows, which have tabs - all called something else, just to make it easier :kissing_smiling_eyes:)   
 
 - control  
 For all commands you need to use a **prefix key**:  
@@ -97,7 +97,7 @@ prefix + <kbd>←↓↑→</kbd>
 prefix + <kbd>Z</kbd>  
 \- **zoom** - use once to zoom in and again to zoom out  
 
-## Dot files
+## Dot files :page_facing_up:
 DOT FILES - Allow you to configure your shell so that it works for you.
 
 #### side note - Aliases
@@ -126,7 +126,7 @@ Symbolic Links show as `'Symlink Name' -> '/targets/actual/full/path` when you u
 
 **GNU Stow** is a good link for managing symlinks - you can add them safely. Or you can use **ln** to add them yourself -> `ln -s source_file symlink_fyle`  
 
-## Remote machines
+## Remote machines :computer:
 ### SSH
 - secure shell, allows remote connection to machines  
 - you can execute command on the remote machine  
