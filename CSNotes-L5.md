@@ -6,6 +6,7 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 - You can really make the cmd line environment work for you if you configure it - use _dotfiles_ to change the default settings and _terminal multiplexers_ to use more than one shell window within one emulator window  
 - You can control machines remotely through _SSH (secure socket shell)_  
 - ...and if you create keys you won't need to authenticate with a password, but _keep your keys safe - add a passphrase to protect the private key & only store the public key on servers_.  
+- `htop` - cute process viewer for Linux :sparkles:  
 
 
 
@@ -63,38 +64,38 @@ Sounds futuristic, I know. They exists so that you **don't need to use multiple 
 (just like in editors you have tabs, which have windows, which have buffers, or in browsers you have sessions, with windows, which have tabs - all called something else, just to make it easier :kissing_smiling_eyes:)   
 
 - control  
-For all commands you need to use a **prefix key**:  
+**For all commands you need to use a prefix key**:  
 <kbd>Ctrl</kbd> + <kbd>B</kbd> - default  
 <kbd>Ctrl</kbd> + <kbd>A</kbd> - remapped by many users for convenience  
 ... followed by a command key. :point_down:  
 
-prefix + <kbd>?</kbd>  
+- prefix + <kbd>?</kbd>  
 \- for a **list of bind keys**  
 
-`tmux d` or prefix + <kbd>D</kbd>  
+- prefix + <kbd>D</kbd> or `tmux d`  
 \-  **dettaches** from the session (like minimising - the process is still running)  
-`tmux a` or prefix + <kbd>A</kbd>  
+- prefix + <kbd>A</kbd> or `tmux a`  
 \- **reattaches** to the session  
-`tmux new -t [session name]`  
+- `tmux new -t [session name]`  
 \- starts a **new session named** _session name_ (you get a number by default if you don't specify a name)  
-`tmux ls`  
+- `tmux ls`  
 \- **lists** sessions  
-`tmux c` or prefix + <kbd>C</kbd>  
+- prefix + <kbd>C</kbd> or `tmux c`  
 \- create a new **window**  
-prefix + <kbd>P</kbd>  
+- prefix + <kbd>P</kbd>  
 \- **previous** window  
-prefix + <kbd>N</kbd>  
+- prefix + <kbd>N</kbd>  
 \- **next** window   
-prefix + <kbd>[windows number]</kbd>  
+- prefix + <kbd>[window number]</kbd>  
 \- jump to a specific window  
 You can rename windows after they are open.  
-prefix + <kbd>"</kbd>  
+- prefix + <kbd>"</kbd>  
 \- pane - **vertical split**   
-prefix + <kbd>%</kbd>  
+- prefix + <kbd>%</kbd>  
 \- pane - **horizontal split**   
-prefix + <kbd>←↓↑→</kbd>  
+- prefix + <kbd>←↓↑→</kbd>  
 \- **move** between he panes   
-prefix + <kbd>Z</kbd>  
+- prefix + <kbd>Z</kbd>  
 \- **zoom** - use once to zoom in and again to zoom out  
 
 ## Dot files :page_facing_up:
@@ -127,18 +128,43 @@ Symbolic Links show as `'Symlink Name' -> '/targets/actual/full/path` when you u
 **GNU Stow** is a good link for managing symlinks - you can add them safely. Or you can use **ln** to add them yourself -> `ln -s source_file symlink_fyle`  
 
 ## Remote machines :computer:
-### SSH
+### SSH overview
 - secure shell, allows remote connection to machines  
 - you can execute command on the remote machine  
-- you can create secure **keys** and store the same key on client and server, so that they can identify each other when attempting an ssh connection (only store your PUBLIC key on the server, keep the private part of the key private)   
-- you can use DNS names or IP addresses to connect  
+- you can create secure **keys** and [store](#Keys) the same key on client and server, so that they can identify your client when attempting an ssh connection (only store your PUBLIC key on the server, keep the private part of the key private)   
+- you can use DNS names or IP addresses to [connect](#Connecting)  
 
-### Options (as presented in the lecture)  
+### Connecting   
+- You can either type in the password for a user that's authorised to use the remote machine, or use a key  
 - `ssh username@remote_address`  
 If you use just the **ssh** command alone, the shell emulator will switch to the remote machine emulator (so in your window you will see the remote machine's shell)  
-You can then execute the commands there  
-- **pipe** - `ssh username@remote_address [some_cmd] | [cmd using output of some_cmd]`  
 
+### Keys  
+- Use ssh-keygen to generate a key ([docs](https://www.ssh.com/ssh/keygen/))  
+- Key has two parts - private and public - the public key can be shared with remote machines  
+- Passphrase protect your private key!  
+- Key's are stored in dif places on different systems, check documentation  
+- You need to copy the key to the server you will be connecting to, you can try to cat & tee it from your local machine to the server or use `ssh-copy-id username@server`  
+
+### Executing commands  
+- You can then execute the commands on the server by typing `ssh [connection details] [some_cmd]`  
+- or **pipe** to your local machine - `ssh username@remote_address [some_cmd] | [cmd executed locally using the output of some_cmd]`  
+
+
+### Copying files  
+- Instead of `cp` you'll be using `scp`  
+\- `scp [localpath] username@server:[remotepath]`  
+\- can cause duplicates
+
+- for **multiple files** you can use `rsync`  
+\- It's amazing because it detects duplicates  
+\- check flags  
+
+- you can also use cat + tee  
+
+### Config  
+- Config file let's you specify an alias for a host and all connecion details so you can then just call `ssh alias`  
+- Other programs will also use the ssh config if they need to use ssh for their jobs  
 
 
 
