@@ -3,6 +3,9 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/command-line
 ## TL;DR & personal favourites
 - `SIGNAL` - shell communicates with programs through signals, _there's more to life than ^C_ - you can not only interrupt, but also pause, abort, continue, report... for a full list `man signal`  
 - Stop your jobs from being interrupted - you can use _nohup_ or _import signal_ to your app and change the default behaviour (eg. override SIGINT) - but you can't override SIGKILL  
+- You can really make the cmd line environment work for you if you configure it - use dotfiles to change the default settings and tmux to use more than one shell window within one emulator window  
+- You can control machines remotely through SSH  
+- ...and if you create keys you won't need to authenticate with a password, but _keep your keys safe - add a passphrase to protect the private key & only store the public key on servers_.  
 
 
 
@@ -60,7 +63,7 @@ tmux has **sessions**
 (just like in editors you have tabs, which have windows, which have buffers, or in browsers you have sessions, with windows and tabs - just to make it easier)   
 
 - control  
-For all commands you need to use a **prefix key**:
+For all commands you need to use a **prefix key**:  
 <kbd>Ctrl</kbd> + <kbd>B</kbd> - default  
 <kbd>Ctrl</kbd> + <kbd>A</kbd> - remapped by many users for convenience  
 ... followed by a command key. :point_down:  
@@ -107,8 +110,35 @@ You can **check** existing aliases by typing `alias alias_name` - you will see t
 Most shell programs have a text based config file - a dotfile.  
 For historical reasons names begin with a dot, contain config for all sort.  
 
-**Programs + dotfiles**  
-- **bash** - .bashrc
+Examples?  
+- **bash** - .bashrc  
+- **vim** - .vimrc  
+These files will hold config for these particular applications.  If you want to configure any of the apps you're using just google search their dotfiles.  
 
+How to know what to configure?
+There is a lot of repos **on github**, folks configuring their apps and sharing the config - **vet before you get!**  
+Use lecture resources.  
+
+Where do dotfiles live?
+By default - you need to check per app.  
+People usually store all of them in one folder,create Symbolic Links (**symlinks**) to the actual location and put it in the location where the system (or applications looking for other applications) expects the dotfile to be.  
+Symbolic Links show as `'Symlink Name' -> '/targets/actual/full/path` when you use `ls -l` - an example in Windows would be _'My Documents' -> /c/Users/%username%/Documents_  
+
+**GNU Stow** is a good link for managing symlinks - you can add them safely. Or you can use **ln** to add them yourself -> `ln -s source_file symlink_fyle`  
 
 ## Remote machines
+### SSH
+- secure shell, allows remote connection to machines  
+- you can execute command on the remote machine  
+- you can create secure **keys** and store the same key on client and server, so that they can identify each other when attempting an ssh connection (only store your PUBLIC key on the server, keep the private part of the key private)   
+- you can use DNS names or IP addresses to connect  
+
+### Options (as presented in the lecture)  
+- `ssh username@remote_address`  
+If you use just the **ssh** command alone, the shell emulator will switch to the remote machine emulator (so in your window you will see the remote machine's shell)  
+You can then execute the commands there  
+- **pipe** - `ssh username@remote_address [some_cmd] | [cmd using output of some_cmd]`  
+
+
+
+
