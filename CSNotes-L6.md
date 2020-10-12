@@ -20,5 +20,6 @@ Git **data model** represents a history of some files and folders _as a series o
 
 ### Where do snapshots live then?  
 So snapshots are like bubbles that contain all of the trees and blobs **in their current state** (at the time of snapshot).  
-Every snapshot points to a previous snapshot
-:heart: <-- :heart: <-- :heart:  
+Every snapshot points to a previous snapshot  
+:heart: <---- :heart: <---- :heart:  
+firsts - - - next - - - most recent  
