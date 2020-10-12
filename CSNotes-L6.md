@@ -28,6 +28,14 @@ It doesn't have to be this linear!
 
 firsts - - - next - - - most recent  
 :heart: <---- :heart: <---- :heart:  
-\----------------^-- :purple_heart:  
-\- - - - - - - - - - - fork based on the 2nd snapshot  
+\-----------^-- :blue_heart:  
+\- - - - - - - - - - fork based on the 2nd snapshot  
  
+ (Yes I realise there is an easier way to represent this).  
+
+
+ You can separate what you work on and work in parallel to yourself and others - eg. when you want to split the problems and work with one version of your code for feature development and one for bug fixing. You don't want to handle changes in both, as it's too much and can get messy easily. However, since your starting point is the same, git let's you remember the point in history / version of your source code where you forked off (tee hee) and went to do your things, and will intelligently let you remember and compare all future changes, rather than having to have full copies of your code to work on, and then try to piece it back together yourself. Once you've worked on :heart: and :blue_heart: and you're happy to put them together, you can **merge them**.  
+ This creates a new snapshot :purple_heart: that contains all changes.  
+  
+**merge conflicts** - of course if you worked on something in one branch that affects the other and merging may create a problem - git will warn you about a merge conflict and let you figure out how you want to piece is together.  
+
