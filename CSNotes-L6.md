@@ -26,8 +26,8 @@ firsts - - - next - - - most recent
 
 It doesn't have to be this linear!  
 
-firsts - - - next - - - most recent 
+firsts - - - next - - - most recent  
 :heart: <---- :heart: <---- :heart:  
-\----------------^-- :purple_heart:
+\----------------^-- :purple_heart:  
 \- - - - - - - - - - - fork based on the 2nd snapshot  
  
