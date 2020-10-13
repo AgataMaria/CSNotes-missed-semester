@@ -7,6 +7,12 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/version-cont
 - What lives in a .git file is:  
 `HEAD config description hooks info objects refs`  
 _(lighbulb moment)_  
+- `git log --all --graph --decorate` is a hero  
+- apart from keeping a local repo, you can create one on a remote server - like a github.com type service - so you can share it with others or have a version you can connect to from other devices  
+- `git checkout` let's you switch to any previous node references by hash or the most recent node on the chosen branch - references by branch name  
+- **master** is special - by design  
+- **origin** is special - by convention  
+
 
 
 
@@ -60,7 +66,7 @@ type commit = struct {
     message: string
     snapshot: tree
 }
-// git is a collection of objects of anytype
+// git is a collection of objects of any type
 type objects = blob | tree | commit
 
 // this is git
@@ -69,24 +75,48 @@ objects = map<string, objects>
 
 so _blob_ is the substance, _tree_ is a map / something describing the addresses and structure of other trees (map) and blobs (substance), a _commit_ is a structure, an object that has information about the whole structure (by reference) + metadata like author, message and a reference to previous commits.  If you think of an _object_ as an instance of any one of those types, _git_ is a _collection of mapped out objects_, it's the data, the description of a structure, details from the commits and a description / map of how it all fits together, all stored in a form that git can understand and operate on, so if you say `git status`, git knows how to read the information it contains to give you (own interpretation never to be cited to another human being ever again ever).  
   
->Interesting: Git stores all these objects as a SHA-1 hash of snapshots
-> SHA-1 is a cryptographic hash function which takes an input and produces a 160-bit (20-byte) hash value known as a message digest – typically rendered as a hexadecimal number, 40 digits long.  
-  
+>Interesting: Git stores all these objects as a SHA-1 hash of snapshots  
+>SHA-1 is a cryptographic hash function which takes an input and produces a 160-bit (20-byte) hash value known as a message digest – typically rendered as a hexadecimal number, 40 digits long.  
+
+---
+
 ## Git - how to use :point_down:
 
 ### Commands & Concepts  
 #### git init
-Initialises the **reporitory** (creates a .git file, which will contain **objects, references** other data git needs)  
-`HEAD config description hooks info objects refs`  
+Initialises the **repository** (creates a .git file, which will contain **objects, references** other data git needs)  
+here's what's inside - `HEAD config description hooks info objects refs`  
 
-#### Staging - what's tracked?
+#### Staging - what's tracked?  
 Git let's you choose which files to actually track, so when you take a snapshot it does not need to be a snapshot of the entire dir. You can either add individual files / dirs (blobs / trees) or you can add the whole dir, but have a .gitignore file, which is a _dotfile_ with info on what to ignore during the staging area  
 
-#### git add
+#### git add  
 Stages files to include in the next snapshot. `git add foo.txt` will stage _foo.txt_ and `git add .` will add the entire current directory. `git add :/` would add the entire directory root down.  
 
-#### git commit
-Read as 'take a snapshot' - it will create a hash of all trees and blobs staged with git add. Makes sense now? (gives you a hash, if you cat-file -p _hash_ you can see what it contains :))  
+#### git commit  
+Read as 'take a snapshot' - it will create a hash of all trees and blobs staged with git add. Makes sense now? (it gives you a hash, if you cat-file -p _hash_ you can see what it contains :))  
 
 #### git status  
-Shows a history of changes  
+Shows the changes history 
+
+#### git log  
+Shows the history in a nicer format - when you use `git log --all --graph --decorate`  
+
+#### HEAD  
+Current node - the current branch and commit on that branch  
+When you check log you can see which node is the head node currently  
+
+#### git checkout - going back  
+Let' you switch nodes - you can checkout to the latest version of a chosen branch (like master or some other branch references by name) or go back to a previous commit  
+To go back to a previous commit - you need to know the commit hash (long hex string) - you can look it up using git log.
+then use `git checkout <commithash>`  
+**This will move the HEAD node and also change the contents of your current directory - so check before you force it.**
+
+
+
+
+
+
+
+
+
