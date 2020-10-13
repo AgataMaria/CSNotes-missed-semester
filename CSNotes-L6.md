@@ -2,14 +2,14 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/version-cont
 
 ## TL;DR & personal favourites :icecream:
 - **git** is one of the version control systems (vcs). Vcs are tools that helps tracking changes history of files and allow collaboration. Git is popular, robust, mysterious, uuuuh-wesome)  
-- With vcs you're basically **taking a snapshot** of a state and attach a **message** to it. You also get an author and time stamp, a unique commit ID and some other details that are useful  
-- Referneces to all snapshots and objects are stored in a **repository** in a .git file.  
+- With vcs you're basically **taking a snapshot** of a state of your directory / codebase and attach a **message** to it. You also get an author and time stamp, a unique commit ID and some other details that are useful  
+- References to all snapshots (commits) and objects (folders | files | commits) are stored in a **repository** in a .git file.  
 - What lives in a .git file is:  
 `HEAD config description hooks info objects refs`  
 _(lighbulb moment)_  
 - `git log --all --graph --decorate` is a hero  
-- apart from keeping a local repo, you can create one on a remote server - like a github.com type service - so you can share it with others or have a version you can connect to from other devices  
-- `git checkout` let's you switch to any previous node references by hash or the most recent node on the chosen branch - references by branch name  
+- apart from keeping a local repo, you can create one on a remote server - like a github.com type service - so you can share it with others or have a version you can connect to from other devices - use `git remote` to add info about a remote repo to your local repo so git knows where to push changes to  
+- `git checkout` let's you switch to any previous node - referenced by hash (long hex string) - or the most recent node on the chosen branch - referenced by branch name  
 - **master** is special - by design  
 - **origin** is special - by convention  
 
@@ -38,7 +38,7 @@ It doesn't have to be this linear!
 
 firsts - - - next - - - most recent  
 :heart: <---- :heart: <---- :heart:  
-\-----------^-- :blue_heart:  
+\-----------^-- :blue_heart:------  
 \- - - - - - - - - - fork based on the 2nd snapshot  
  
  (Yes I realise there is an easier way to represent this).  
@@ -94,13 +94,14 @@ Git let's you choose which files to actually track, so when you take a snapshot 
 Stages files to include in the next snapshot. `git add foo.txt` will stage _foo.txt_ and `git add .` will add the entire current directory. `git add :/` would add the entire directory root down.  
 
 #### git commit  
-Read as 'take a snapshot' - it will create a hash of all trees and blobs staged with git add. Makes sense now? (it gives you a hash, if you cat-file -p _hash_ you can see what it contains :))  
+Read as 'take a snapshot' - it will create a hash of all trees and blobs staged when you did _git add_. Makes sense now? (it gives you a hash you can reference this particular commit by, if you cat-file -p _hash_ you can see what it contains :))  
 
 #### git status  
-Shows the changes history 
+Shows the history of changes   
 
 #### git log  
 Shows the history in a nicer format - when you use `git log --all --graph --decorate`  
+It's a program so you have to use `q` to quit :)  
 
 #### HEAD  
 Current node - the current branch and commit on that branch  
@@ -110,7 +111,12 @@ When you check log you can see which node is the head node currently
 Let' you switch nodes - you can checkout to the latest version of a chosen branch (like master or some other branch references by name) or go back to a previous commit  
 To go back to a previous commit - you need to know the commit hash (long hex string) - you can look it up using git log.
 then use `git checkout <commithash>`  
-**This will move the HEAD node and also change the contents of your current directory - so check before you force it.**
+**This will move the HEAD node and also change the contents of your current directory - so check before you force it.**  
+
+#### git diff  
+Shows you the changes made to a <whatever you point to> - it can take different arguments, so you can compare different snapshots of the same file,  so `git diff filename.foo` will show you the most recent changes made in HEAD for filename.foo.
+
+### Branching & Mergins
 
 
 
@@ -120,3 +126,6 @@ then use `git checkout <commithash>`
 
 
 
+
+
+-
