@@ -3,7 +3,11 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/version-cont
 ## TL;DR & personal favourites :icecream:
 - **git** is one of the version control systems (vcs). Vcs are tools that helps tracking changes history of files and allow collaboration. Git is popular, robust, mysterious, uuuuh-wesome)  
 - With vcs you're basically **taking a snapshot** of a state and attach a **message** to it. You also get an author and time stamp, a unique commit ID and some other details that are useful  
-- Git is **distributed**, which makes it powerful  
+- Referneces to all snapshots and objects are stored in a **repository** in a .git file.  
+- What lives in a .git file is:  
+`HEAD config description hooks info objects refs`  
+_(lighbulb moment)_  
+
 
 
 ---
@@ -11,7 +15,7 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/version-cont
 ## Git data model. Beautiful - on the inside :swan:  
 Yeah, you totally need to get over the interface, but once you understand why it's a beautiful data model, you'll be able to appreciate it and bear the face.  
 
-### What's what  
+### What's what - part 1  
 Git **data model** represents a history of some files and folders _as a series of snapshots_. Let's take the files and folders first:  
 - **folder** - is called a **tree**  
 - **file** - is called a **blob**  
@@ -39,3 +43,50 @@ firsts - - - next - - - most recent
   
 **merge conflicts** - of course if you worked on something in one branch that affects the other and merging may create a problem - git will warn you about a merge conflict and let you figure out how you want to piece is together.  
 
+### What's what - continued  
+
+From the original notes:
+```
+// a file is a bunch of bytes
+type blob = array<byte>
+
+// a directory contains named files and directories
+type tree = map<string, tree | blob>
+
+// a commit has parents, metadata, and the top-level tree
+type commit = struct {
+    parent: array<commit>
+    author: string
+    message: string
+    snapshot: tree
+}
+// git is a collection of objects of anytype
+type objects = blob | tree | commit
+
+// this is git
+objects = map<string, objects>
+```
+
+so _blob_ is the substance, _tree_ is a map / something describing the addresses and structure of other trees (map) and blobs (substance), a _commit_ is a structure, an object that has information about the whole structure (by reference) + metadata like author, message and a reference to previous commits.  If you think of an _object_ as an instance of any one of those types, _git_ is a _collection of mapped out objects_, it's the data, the description of a structure, details from the commits and a description / map of how it all fits together, all stored in a form that git can understand and operate on, so if you say `git status`, git knows how to read the information it contains to give you (own interpretation never to be cited to another human being ever again ever).  
+  
+>Interesting: Git stores all these objects as a SHA-1 hash of snapshots
+> SHA-1 is a cryptographic hash function which takes an input and produces a 160-bit (20-byte) hash value known as a message digest – typically rendered as a hexadecimal number, 40 digits long.  
+  
+## Git - how to use :point_down:
+
+### Commands & Concepts  
+#### git init
+Initialises the **reporitory** (creates a .git file, which will contain **objects, references** other data git needs)  
+`HEAD config description hooks info objects refs`  
+
+#### Staging - what's tracked?
+Git let's you choose which files to actually track, so when you take a snapshot it does not need to be a snapshot of the entire dir. You can either add individual files / dirs (blobs / trees) or you can add the whole dir, but have a .gitignore file, which is a _dotfile_ with info on what to ignore during the staging area  
+
+#### git add
+Stages files to include in the next snapshot. `git add foo.txt` will stage _foo.txt_ and `git add .` will add the entire current directory. `git add :/` would add the entire directory root down.  
+
+#### git commit
+Read as 'take a snapshot' - it will create a hash of all trees and blobs staged with git add. Makes sense now? (gives you a hash, if you cat-file -p _hash_ you can see what it contains :))  
+
+#### git status  
+Shows a history of changes  
