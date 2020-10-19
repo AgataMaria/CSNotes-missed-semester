@@ -83,40 +83,61 @@ so _blob_ is the substance, _tree_ is a map / something describing the addresses
 ## Git - how to use :point_down:
 
 ### Commands & Concepts  
-#### git init
+#### Basic
+
+- `git init`  
 Initialises the **repository** (creates a .git file, which will contain **objects, references** other data git needs)  
 here's what's inside - `HEAD config description hooks info objects refs`  
-
-#### Staging - what's tracked?  
+  
+- Staging - what's tracked?  
 Git let's you choose which files to actually track, so when you take a snapshot it does not need to be a snapshot of the entire dir. You can either add individual files / dirs (blobs / trees) or you can add the whole dir, but have a .gitignore file, which is a _dotfile_ with info on what to ignore during the staging area  
-
-#### git add  
+  
+- `git add  <file> | <dir`  
 Stages files to include in the next snapshot. `git add foo.txt` will stage _foo.txt_ and `git add .` will add the entire current directory. `git add :/` would add the entire directory root down.  
-
-#### git commit  
+  
+- `git commit`  
 Read as 'take a snapshot' - it will create a hash of all trees and blobs staged when you did _git add_. Makes sense now? (it gives you a hash you can reference this particular commit by, if you cat-file -p _hash_ you can see what it contains :))  
-
-#### git status  
+  
+- `git status`  
 Shows the history of changes   
-
-#### git log  
+  
+- `git log`  
 Shows the history in a nicer format - when you use `git log --all --graph --decorate`  
+Displays a history of commits and where HEAD is and where all other branches are (which point in history / version of code have they been updated to - through add & commit)  
 It's a program so you have to use `q` to quit :)  
-
-#### HEAD  
+  
+- HEAD  
 Current node - the current branch and commit on that branch  
 When you check log you can see which node is the head node currently  
-
-#### git checkout - going back  
+  
+- `git checkout` (going back)  
 Let' you switch nodes - you can checkout to the latest version of a chosen branch (like master or some other branch references by name) or go back to a previous commit  
 To go back to a previous commit - you need to know the commit hash (long hex string) - you can look it up using git log.
 then use `git checkout <commithash>`  
 **This will move the HEAD node and also change the contents of your current directory - so check before you force it.**  
 
-#### git diff  
-Shows you the changes made to a <whatever you point to> - it can take different arguments, so you can compare different snapshots of the same file,  so `git diff filename.foo` will show you the most recent changes made in HEAD for filename.foo.
+**To iscard most recent changes** and going from tthe file version in your current directory to the one in HEAD use `git checkout <file>`  
+_See also git checkout in [Branching & Merging](#Branching-&-Merging)  
+  
+- `git diff <file>`  
+Shows you the changes made to a <file> - it can take different arguments, so you can compare different snapshots of the same file,  so `git diff filename.foo` will show you the most recent changes made in HEAD for filename.foo.
 
-### Branching & Mergins
+#### Branching & Merging  
+
+- `git branch`  
+Displays branches  
+- `git branch <branch name>`  
+Creates a new branch called <branch name> (doesn't switch to this branch!)  
+- `git checkout <branch name>  `
+Switches to <branch name>  
+- `git checkout -b <branch name>`  
+Equivalent of `git branch <name>; git checkout <name>`  
+Creates & Switches to the new branch  
+- `git merge <commit hash>`  
+- `git mergetool`  
+- `git rebase`  
+ 
+#### Remote repo  
 
 
 
