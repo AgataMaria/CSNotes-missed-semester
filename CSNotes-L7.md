@@ -72,4 +72,36 @@ From lecture notes:
 > Network - Analyze the requests timeline.  
 > Storage - Look into the Cookies and local application storage.  
 
+--- 
 ## Profiling  
+It's about making using the resources (like CPU)
+
+### A note about Time
+In CS we often talk about three different times:
+- real time  
+In apps the entire length of time spent carrying out a task / between two events.  
+- user time  
+Amount of time spent in CPU between events (when carrying out a task / running a program). This is time spent doing 'user level cycles'.  
+- system time  
+Same, but for kernel level cycles, so operations like.  
+
+### Profilers - CPU
+- Tracing profilers  
+add a lot of overhead  
+tell you exactly how much time was spent - down to each function  
+- Sampling  
+carry out the same job, but do it now and then (not all the time like tracing profilers) and build a picture over time  
+
+**cProfile** - profiler for python, discussed in the Lecutre, profiling per function call (need to check for other languages)  
+
+**kernprof** - same as cProfile, but talks about time per line (it's a _line profiler_) and displays data in a different way eg gives you % for functions instead of just  
+
+### Profilers - Memory
+- Valgrind  
+detects memory leaks and gives advice - made for C and C++  
+- Garbage collector
+a lot of languages have a garbage collector, but GC would skip objects that still have pointers to them and also it's still important to understand how you use memory  
+
+### Event profiling
+
+
