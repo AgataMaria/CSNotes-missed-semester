@@ -12,6 +12,7 @@ _(lighbulb moment)_
 - `git checkout` let's you switch to any previous node - referenced by hash (long hex string) - or the most recent node on the chosen branch - referenced by branch name  
 - **master** is special - by design  
 - **origin** is special - by convention  
+- `git commit --dry-run` is excellent for those with commitment issues
 
 
 
@@ -97,6 +98,10 @@ Stages files to include in the next snapshot. `git add foo.txt` will stage _foo.
   
 - `git commit`  
 Read as 'take a snapshot' - it will create a hash of all trees and blobs staged when you did _git add_. Makes sense now? (it gives you a hash you can reference this particular commit by, if you cat-file -p _hash_ you can see what it contains :))  
+  
+- `git commit --dry-run`  
+ from Git documentation:
+ > Do not create a commit, but show a list of paths that are to be committed, paths with local changes that will be left uncommitted and paths that are untracked.
   
 - `git status`  
 Shows the history of changes   
