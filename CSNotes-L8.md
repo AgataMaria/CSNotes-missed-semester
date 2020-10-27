@@ -1,8 +1,11 @@
 Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/metaprogramming/](https://missing.csail.mit.edu/2020/metaprogramming/)
 
 ## TL;DR & personal favourites :icecream:  
+- You can automate and standardise things that your program needs to run - create a build script that will build your program the way you want it  
 - You can use [`make`](#`make`-&-Makefile) for simple-to-mid projects to create [_targets_](#Targets) using the recipe from a Makefile  
 - `make` just chills if none of the dependencies changed, as there's no point in making the same file again  
+- when specifying a version number in your dependencies go for as low as you can in 'minor' version (second number in the versoin number)  
+- GitHub pages is basically letting you CI action that builds your repo as a blog - a good example of CI  
 
 
 ---
@@ -11,7 +14,7 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/metaprogramm
 All things programming that aren't programming - everything that is important about the _process_ and everything around programming, that isn't writing code. This lecture is about building systems to help with programming - systems for building, testing and managing dependencies.  
 
 
-### Build systems  
+### :hammer_and_wrench: Build systems  
 Combining / encoding commands & rules that you would run to carry out a task into a tool that does the job for you. If you typically carry out a sequence of tasks / run commands that allow you to build something, you can automate this.  
 You would teach the tool about [_dependencies_](#Dependencies) between [_targets_](#Targets). There are many tools ready to use, built for different purposes (eg. _npm_ has a tool built in for tracking of dependencies), but the idea is the same and they all have some things in commong, like:  
 
@@ -65,7 +68,7 @@ here, % is a wildcard, so the second block **creates** _plot-sth.png_ out of _st
 Handy.
 
 
-### Managing dependencies
+### :dizzy_face: Managing dependencies
 Dependencies may mean programs & packages installed locally, or libraries your progamming language is using, your program will need these to run. You don't have to declare all of them as you can often assume they're there, but it's good to keep in mind.  
 For most things there are tools that manage dependencies for you.
 
@@ -74,7 +77,7 @@ Apps, packages and libraries your program depends on can be updates/modified ove
 When adding a dependency you can specify a version number of the app/package/library you're using in your program. However, this will mean you won't get updates, which may be beneficial (but then you don't risk unexpected changes).  
 
 #### Semantic versioning
-Semantic versioning is an approach where, as a programmer, you give each of the numbers in the version number of your software a particlar meaning (numbers are separated by dots). There is a convention on when to increment the numbers - in a version number _1.0.8_ - 1 would be the major, 0 minor and 8 a patch version.  
+Semantic versioning is an approach where, as a programmer, you give each of the numbers in the version number of your software a particlar meaning (numbers are separated by dots). There is a convention (major.minor.patch) for when to increment the numbers - in a version number _1.0.8_ - 1 would be the major, 0 minor and 8 a patch version.  
 **major** version update - backwards imcompatible change (remove a function or rename it would be an example)  
 **minor** version update - you are adding something to your library  
 **patch** update - change you made is entirely backwards compatible - externally it's as if nothing has changed  
@@ -82,3 +85,29 @@ When adding a dependancy you can say 'it has to be the same major version and at
 
 It's good to depend on the major + the lowest minor you can.  
 
+#### Lock files
+In dependency management systems **lock file** is a file that lists the exact version you are currently depending on of each dependency.  
+- It makes sure you don't accidentally update something  
+- Your builds are faster, because unless you have updated the version in your lock file - it will just use what was previously built  
+- It givesy ou a reusable setup  
+
+#### Vendoring
+Means you're copying the entire thing that you depend on - so no remote changes would affect you, because it's now in your app. This is an extreme approach - you know exactly what you have and you can change it how you want, but you now need to worry about maintaining it and you don't get the benefits (newer releases of the software won't be available for your users)  
+
+### :ok_hand: Testing & Continuous integration
+#### Continuous integration
+CI is an umbrella term for 'stuff that runs whenever your code changes' - imagine expanding your build system, so that it's externally available and other people working on the same project are using the same build system (that includes documentation, test suites etc.)  
+Like a cloud based build system, an event based action system (a system of rules eg. every time you get a PR the code is style checked) Of course there are some robust CI solutions available, some are free for open-source projects. <- :grey_question: need to look for examples.  
+
+> Side note: **dependabot** automatically checks if there are newer versions of dependencies for you  
+
+#### Testing  
+Tests really vary in depth and angle.  
+- Unit test  
+Tests a single feature - what feature means is up to a project  
+- Integration test  
+Tests interaction between different subsystems of a program  
+- Regression test  
+Tests thingss that were broken in the past - if you fixed a bug before you add a test to the test suite to make sure when you're upgrading your app in the future you don't do the same mistake  
+- Mock test  
+ :grimacing: didn't quite get it <- :grey_question: need to read more
