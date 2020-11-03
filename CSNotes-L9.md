@@ -6,6 +6,8 @@ Official Notes & Lecture Video: [https://missing.csail.mit.edu/2020/security/](h
 - NERDOUT here: [Lifetimes of cryptographic hash functions](https://valerieaurora.org/hash.html)  
 - KDFs are slow, and slow is right sometimes :turtle:  
 - To keep something private you can use a good passphrase + KDF + key generated through that for encryption and then safely store it anywhere :exploding_head: - easy to do - see [example](#Encryption-example)  
+- Info / software about/for private messaging, emails etc. here: [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy), [Keybase](https://keybase.io/), [Signal](https://signal.org/)  
+- There are different approaches to [exchanging public keys](#How-to-exchange-keys).
 
 
 ---
@@ -41,7 +43,7 @@ Similar to hash functions, but **slow to compute** (which is good for defence ag
 ### Symmetric cryptography :shipit:
 **Encryption** - used for hiding content (like messages)  
 **Symetric key crypto functions** have:
-- keygen function (randomised)  
+- keygen function (randomised, produces **one** key)  
 - encrypt function (takes plaintext + key, returns ciphertext)  
 - decrypt function (takes ciphertext + key, produces plaintext)  
 
@@ -53,6 +55,31 @@ Decrypt it with `openssl aes-256-cbc -d -in {input filename} -out {output filena
 
 > Side note: `cmp` is a neat tool for comparing the files - `cmp FILE_1 FILE_2` + `echo $?` // == 0 if the files are the same  
 
+### **A**symmetric cryptography (╯⊙ ⊱ ⊙╰ )  
+Similar idea, but with a twist! :lollipop:  
+**Asymetric key crypto functions** have:
+- keygen function (randomised, produces **two** keys - one PUBLic, one PRIVate)  
+- encrypt function (takes plaintext + PUBL key, returns ciphertext)  
+- decrypt function (takes ciphertext + PRIV key, produces plaintext)  
+
+What's the point?  
+You can keep the key public to allow clients to encrypt data for you, but only the holder of the private key will be able to decrypt it.  
+Public key can close things, private key can open them - it's more like the public key is a padlock and the private key is a key.  
+
+
+#### Signing and verifying  
+Signing software functions model:
+sing(PRIV key, message) => signature  
+verify(message, signature, PUBL key) => True/False  
+(hard to forge the signature without the PRIV, verification will only check out if you use PRIV for signing and PUBL for verifying)  
+
+#### Usage
+PGP email encryption (pretty cool, you can post your public key and ask people to send you encypted messages). Checkout [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy)  
+Private messaging (some services use this to establish private message exchange - like [Signal](https://signal.org/)) and [Keybase](https://keybase.io/)  
+Signing software  
+
+### How to exchange keys  
+OK this is all cool, but how do you verify that the public key you see, is the correct key and the person/body is who/what they are:
 
 
 
