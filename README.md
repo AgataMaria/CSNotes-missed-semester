@@ -3,7 +3,7 @@ Yes, I did get the course title wrong when I initiated this repo and I refuse to
 
 ## What this is  
 My personal notes from the [MIT's 'Missing Semester' course](https://missing.csail.mit.edu/).  
-I am completing the course with a study group, some of us are compulsive note takers, some of us share their notes. :nerd_face:  
+I am completing the course with a study group, some of us are compulsive note takers, some of us share their notes... :nerd_face: so here we are.  
 
 ## What it isn't  
 These notes are in no way comprehensive and in no way a good reflection of the course content - the course creators have released official notes, so for valueable content you please refer to the course's website.  
