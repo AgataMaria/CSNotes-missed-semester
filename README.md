@@ -1,4 +1,4 @@
-# ~~Missed~~ Missing Semester (of Your CS Eeducation)  
+# ~~Missed~~ Missing Semester (of Your CS Education)  
 Yes, I did get the course title wrong when I initiated this repo and I refuse to change this.  
 
 ## What this is  
